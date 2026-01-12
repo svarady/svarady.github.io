@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDSC Dataset Analysis | Soledad Varady</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .case-study {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, #2c5f7f 0%, #1a8599 50%, #16a8b3 100%);
+            color: white;
+            padding: 4rem 0 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .case-header .container {
+            max-width: 900px;
+        }
+        
+        .case-header h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .case-header .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+        
+        .case-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .meta-item i {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .back-button:hover {
+            opacity: 0.8;
+        }
+        
+        .case-content {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .case-content h2 {
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        .case-content h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .case-content h4 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .case-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .case-content ul, .case-content ol {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .case-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .highlight-box h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 2px solid rgba(6, 182, 212, 0.1);
+        }
+        
+        .feature-card h4 {
+            color: var(--primary);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-card ul {
+            margin: 0.5rem 0 0 1.5rem;
+        }
+        
+        code {
+            background: var(--bg-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .method-section {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Header -->
+    <div class="case-header">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <h1>GDSC Dataset Analysis</h1>
+            <p class="subtitle">Exploratory and Inferential Analysis of Cancer Drug Sensitivity</p>
+            <div class="case-meta">
+                <div class="meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Health Data Analyst: Soledad Varady</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-flask"></i>
+                    <span>Genomics of Drug Sensitivity in Cancer</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fab fa-r-project"></i>
+                    <span>R Language & Statistical Analysis</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="case-study">
+        <div class="container case-content">
+            
+            <!-- Project Overview -->
+            <h2 id="overview">Project Overview</h2>
+            
+            <div class="highlight-box">
+                <h4>Project Objectives</h4>
+                <p>This project presents a comprehensive exploratory, statistical, and inferential analysis of the GDSC (Genomics of Drug Sensitivity in Cancer) dataset, integrating molecular, pharmacological, and clinical data from tumor cell lines.</p>
+            </div>
+
+            <h3>Key Goals</h3>
+            <ul>
+                <li>Explore pharmacological variables (LN_IC50, AUC, Z-SCORE)</li>
+                <li>Analyze sensitivity differences across tumor types</li>
+                <li>Evaluate associations with molecular pathways and mutations</li>
+                <li>Build explanatory models (logistic and linear regression)</li>
+                <li>Prepare pipeline for predictive modeling phase</li>
+            </ul>
+
+            <!-- Dataset -->
+            <h2 id="dataset">Dataset & Variables</h2>
+            
+            <h3>Data Source</h3>
+            <p>Official GDSC portal: <a href="https://www.cancerrxgene.org" target="_blank" style="color: var(--primary);">www.cancerrxgene.org</a></p>
+
+            <h3>Main Variables</h3>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4><i class="fas fa-pills"></i> Drug Response Metrics</h4>
+                    <ul>
+                        <li><strong>LN_IC50:</strong> Log-transformed IC50</li>
+                        <li><strong>AUC:</strong> Area Under Curve</li>
+                        <li><strong>Z_SCORE:</strong> Standardized sensitivity</li>
+                        <li><strong>MIN_CONC / MAX_CONC:</strong> Concentration range</li>
+                        <li><strong>RMSE:</strong> Model fit quality</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4><i class="fas fa-hospital"></i> Clinical Metadata</h4>
+                    <ul>
+                        <li><strong>TCGA_DESC:</strong> Tumor type description</li>
+                        <li><strong>Cancer.Type:</strong> Matching TCGA label</li>
+                        <li>Cell line characteristics</li>
+                        <li>Tissue origin</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4><i class="fas fa-dna"></i> Molecular Features</h4>
+                    <ul>
+                        <li><strong>TARGET_PATHWAY:</strong> Drug target pathway</li>
+                        <li><strong>Mutational Status:</strong> WES data</li>
+                        <li>Gene expression profiles</li>
+                        <li>Genomic alterations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Stack -->
+            <h2 id="tools">Technical Stack</h2>
+            
+            <h3>Programming Language</h3>
+            <div class="tech-stack">
+                <span class="tech-item"><i class="fab fa-r-project"></i> R Language</span>
+            </div>
+
+            <h3>Key R Packages</h3>
+            <div class="tech-stack">
+                <span class="tech-item">tidyverse</span>
+                <span class="tech-item">ggplot2</span>
+                <span class="tech-item">reshape2</span>
+                <span class="tech-item">readr</span>
+                <span class="tech-item">dplyr</span>
+                <span class="tech-item">GGally</span>
+                <span class="tech-item">ggpubr</span>
+                <span class="tech-item">gridExtra</span>
+                <span class="tech-item">FSA</span>
+                <span class="tech-item">vegan</span>
+                <span class="tech-item">broom</span>
+            </div>
+
+            <!-- Methodology -->
+            <h2 id="methodology">Analysis Methodology</h2>
+            
+            <div class="method-section">
+                <h3>1. Data Loading & Initial Description</h3>
+                <ul>
+                    <li>Dataset exploration with <code>glimpse()</code> and <code>summary()</code></li>
+                    <li>Global descriptive statistics</li>
+                    <li>Metrics by tumor type (TCGA_DESC)</li>
+                </ul>
+            </div>
+
+            <div class="method-section">
+                <h3>2. Data Visualization</h3>
+                <ul>
+                    <li>Boxplots of LN_IC50, AUC, and Z_SCORE distributions</li>
+                    <li>Histograms of LN_IC50 and AUC</li>
+                    <li>Scatterplot: AUC vs LN_IC50</li>
+                    <li>Proportion charts: Sensitive vs Resistant by tumor type and molecular pathway</li>
+                </ul>
+            </div>
+
+            <div class="method-section">
+                <h3>3. Categorical Sensitivity Variable Creation</h3>
+                <p>Classification based on percentiles:</p>
+                <ul>
+                    <li><strong>Sensitive:</strong> ≤ p25</li>
+                    <li><strong>Intermediate:</strong> p25 – p75</li>
+                    <li><strong>Resistant:</strong> ≥ p75</li>
+                </ul>
+            </div>
+
+            <div class="method-section">
+                <h3>4. Correlation Analysis</h3>
+                <ul>
+                    <li>Correlation matrix (LN_IC50, AUC, RMSE, MIN/MAX_CONC)</li>
+                    <li>Visualization with <code>GGally::ggcorr()</code></li>
+                </ul>
+            </div>
+
+            <div class="method-section">
+                <h3>5. Inferential Statistical Analysis</h3>
+                <h4>Statistical Tests Applied:</h4>
+                <ul>
+                    <li><strong>Shapiro-Wilk:</strong> Normality testing</li>
+                    <li><strong>Kruskal-Wallis:</strong> Group comparisons (non-parametric)</li>
+                    <li><strong>ANOVA:</strong> Analysis of variance (parametric)</li>
+                    <li><strong>Dunn post-hoc test:</strong> Pairwise comparisons</li>
+                    <li><strong>Wilcoxon Mann-Whitney:</strong> Two-group comparisons</li>
+                    <li><strong>permANOVA:</strong> Multivariate analysis</li>
+                </ul>
+            </div>
+
+            <div class="method-section">
+                <h3>6. Association with Mutations & Molecular Pathways</h3>
+                <ul>
+                    <li>Frequency tables</li>
+                    <li>Chi-square test</li>
+                    <li>Fisher's exact test</li>
+                    <li>Sensitive/Resistant proportion analysis</li>
+                    <li>Pathway-specific Kruskal-Wallis tests</li>
+                </ul>
+            </div>
+
+            <div class="method-section">
+                <h3>7. Explanatory Models</h3>
+                
+                <h4>Logistic Regression</h4>
+                <ul>
+                    <li>Odds Ratios calculation</li>
+                    <li>Confidence intervals</li>
+                    <li>OR visualization (forest plot)</li>
+                </ul>
+
+                <h4>Linear Regression</h4>
+                <ul>
+                    <li>Coefficient estimation</li>
+                    <li>Confidence intervals</li>
+                    <li>Effect interpretation (positive/negative)</li>
+                    <li>Visual representation of model effects</li>
+                </ul>
+            </div>
+
+            <!-- Implementation -->
+            <h2 id="implementation">How to Run the Analysis</h2>
+            
+            <h3>1. Clone the Repository</h3>
+            <div class="code-block">git clone https://github.com/usuario/tu-repo.git
+cd tu-repo</div>
+
+            <h3>2. Open Script in RStudio</h3>
+            <p>File: <code>project_gdsc_analysis.R</code></p>
+
+            <h3>3. Execute the Script</h3>
+            <p>Run the complete script or step-by-step to:</p>
+            <ul>
+                <li>Generate basic statistics</li>
+                <li>Visualize distributions</li>
+                <li>Perform inferential analyses</li>
+                <li>Build explanatory models</li>
+                <li>Generate coefficient visualizations</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>⚠️ Important Note</h4>
+                <p>Ensure data files (.csv and .xlsx) are in the same directory or update file paths in the script.</p>
+            </div>
+
+            <!-- Results & Impact -->
+            <h2 id="results">Key Results & Deliverables</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Analysis Phases</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">R Packages Used</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Statistical Tests</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Predictive Models</div>
+                </div>
+            </div>
+
+            <h3>Project Outcomes</h3>
+            <ul>
+                <li>✅ Comprehensive exploratory data analysis of GDSC dataset</li>
+                <li>✅ Identification of key patterns in drug sensitivity across tumor types</li>
+                <li>✅ Statistical validation of molecular pathway associations</li>
+                <li>✅ Explanatory models (logistic & linear regression) for drug response</li>
+                <li>✅ Reproducible R pipeline for cancer pharmacogenomics analysis</li>
+                <li>✅ Foundation for subsequent predictive modeling phase</li>
+            </ul>
+
+            <h3>Skills Demonstrated</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4><i class="fas fa-chart-bar"></i> Statistical Analysis</h4>
+                    <ul>
+                        <li>Descriptive statistics</li>
+                        <li>Inferential testing</li>
+                        <li>Hypothesis testing</li>
+                        <li>Multivariate analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4><i class="fas fa-project-diagram"></i> Data Wrangling</h4>
+                    <ul>
+                        <li>Data integration</li>
+                        <li>Variable transformation</li>
+                        <li>Missing data handling</li>
+                        <li>Feature engineering</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
+                    <ul>
+                        <li>ggplot2 advanced plotting</li>
+                        <li>Correlation matrices</li>
+                        <li>Forest plots</li>
+                        <li>Multi-panel visualizations</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4><i class="fas fa-dna"></i> Domain Knowledge</h4>
+                    <ul>
+                        <li>Cancer genomics</li>
+                        <li>Pharmacology metrics</li>
+                        <li>TCGA classification</li>
+                        <li>Molecular pathways</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conclusions -->
+            <h2 id="conclusions">Project Impact</h2>
+            
+            <div class="highlight-box">
+                <h4>Value for Precision Medicine</h4>
+                <p>This analysis provides a systematic approach to understanding drug sensitivity patterns in cancer cell lines, integrating genomic and pharmacological data to identify predictive biomarkers for personalized treatment strategies.</p>
+            </div>
+
+            <h3>Applications</h3>
+            <ul>
+                <li><strong>Clinical Decision Support:</strong> Identification of tumor-specific drug sensitivities</li>
+                <li><strong>Biomarker Discovery:</strong> Molecular features associated with drug response</li>
+                <li><strong>Treatment Optimization:</strong> Evidence-based drug selection for specific cancer types</li>
+                <li><strong>Research Foundation:</strong> Pipeline for future predictive modeling projects</li>
+            </ul>
+
+            <h3>Next Steps</h3>
+            <ol>
+                <li>Implement machine learning models for drug response prediction</li>
+                <li>Cross-validation with independent datasets</li>
+                <li>Integration with additional genomic features</li>
+                <li>Development of interactive Shiny dashboard for data exploration</li>
+            </ol>
+
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-dna"></i>
+                    <span>Soledad Varady</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/soledad-varady-9620a8216" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:varadysoledad@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/svarady" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <p class="footer-text">&copy; 2024 Soledad Varady. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

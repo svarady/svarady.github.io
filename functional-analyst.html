@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Portal Personal de Salud | Soledad Varady</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .case-study {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, #2c5f7f 0%, #1a8599 50%, #16a8b3 100%);
+            color: white;
+            padding: 4rem 0 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .case-header .container {
+            max-width: 900px;
+        }
+        
+        .case-header h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .case-header .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+        
+        .case-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .meta-item i {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .back-button:hover {
+            opacity: 0.8;
+        }
+        
+        .case-content {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .case-content h2 {
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        .case-content h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        
+        .case-content h4 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .case-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .case-content ul, .case-content ol {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .case-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .highlight-box h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .toc {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin: 0.5rem 0;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .toc a:hover {
+            color: var(--primary);
+        }
+        
+        code {
+            background: var(--bg-light);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Case Study Header -->
+    <div class="case-header">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <h1>Case Study: Portal Personal de Salud</h1>
+            <p class="subtitle">Health Information System Auditing and Validation</p>
+            <div class="case-meta">
+                <div class="meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Functional Analyst: Soledad Varady</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>May - August 2025</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-industry"></i>
+                    <span>Digital Corporate Health</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="case-study">
+        <div class="container case-content">
+            
+            <!-- Executive Summary -->
+            <h2 id="executive-summary">Executive Summary</h2>
+            
+            <div class="highlight-box">
+                <h4>The Challenge</h4>
+                <p>Sports industry companies like Nike, Adidas, and Under Armour needed a system allowing employees to autonomously manage their personal medical information while ensuring clinical validity through professional auditing by certified physicians.</p>
+            </div>
+
+            <h3>My Role as Functional Analyst</h3>
+            <p>I was responsible for:</p>
+            <ul>
+                <li>Complete specification of functional and non-functional requirements</li>
+                <li>Design of use cases and system interaction flows</li>
+                <li>Creation of sequence diagrams documenting technical integrations</li>
+                <li>Development and execution of test cases for functionality validation</li>
+                <li>Identification and documentation of critical pre-production defects</li>
+            </ul>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Requirements Specified</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Main Use Cases</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Test Cases Executed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1,108%</div>
+                    <div class="stat-label">Project ROI</div>
+                </div>
+            </div>
+
+            <h3>Key Results</h3>
+            <ul>
+                <li><strong>23 requirements specified</strong> (18 functional, 5 non-functional)</li>
+                <li><strong>3 main use cases</strong> documented with UML diagrams</li>
+                <li><strong>8 test cases executed</strong> with 100% coverage of critical flows</li>
+                <li><strong>3 critical defects</strong> identified before production</li>
+                <li><strong>Evidence-based recommendation</strong> to not proceed to validation until bug corrections</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Impact</h4>
+                <p>Early detection of critical defects in filtering modules and SNOMED CT coding prevented the launch of a system that would not have met its primary functional objectives, saving significant post-implementation correction costs and protecting the project's reputation.</p>
+            </div>
+
+            <!-- Methodology -->
+            <h2 id="methodology">Methodology & Framework</h2>
+            
+            <p>I applied a hybrid approach combining:</p>
+            
+            <div class="tech-stack">
+                <span class="tech-item">IEEE 830-1998</span>
+                <span class="tech-item">UML (Unified Modeling Language)</span>
+                <span class="tech-item">Functional Testing</span>
+                <span class="tech-item">SNOMED CT</span>
+                <span class="tech-item">FHIR R4</span>
+                <span class="tech-item">PSeInt Prototyping</span>
+            </div>
+
+            <h3>Work Phases</h3>
+            <ol>
+                <li><strong>Analysis & Requirements Gathering</strong> (May 21-25): Stakeholder identification, scope definition, constraints documentation</li>
+                <li><strong>Requirements Specification</strong> (May 26-28): Functional requirements by role, non-functional requirements, external interfaces</li>
+                <li><strong>Functional Design</strong> (May 29 - June 1): Use case diagrams, sequence diagrams, algorithm prototyping</li>
+                <li><strong>Testing & Validation</strong> (June 2 - August 30): Test case design, functional testing execution, defect documentation</li>
+            </ol>
+
+            <!-- Key Findings -->
+            <h2 id="findings">Critical Findings</h2>
+            
+            <h3>🔴 Critical Defect: SNOMED CT Coding System Non-Functional</h3>
+            
+            <div class="highlight-box">
+                <h4>Most Important Testing Discovery</h4>
+                <p><strong>Context:</strong> SNOMED CT coding is the functional heart of the Personal Health Portal. Without coding:</p>
+                <ul>
+                    <li>Data cannot be validated by auditors</li>
+                    <li>Information cannot be transferred to EHR</li>
+                    <li>There's no interoperability with other clinical systems</li>
+                    <li>The system doesn't fulfill its primary objective</li>
+                </ul>
+            </div>
+
+            <p><strong>Problem Identified:</strong> When attempting to search clinical terms for coding, the system consistently returns:</p>
+            <pre><code>HTTP 404 Not Found
+ClientErrorException: Got an HTTP status code 404 error</code></pre>
+
+            <h4>Technical Impact</h4>
+            <p><strong>Expected Flow:</strong></p>
+            <p>Auditor → Enter "hypertension" → Request to /snomed/search?term=hypertension → SNOMED CT Service → Response with codes → Display results</p>
+            
+            <p><strong>Actual Flow:</strong></p>
+            <p>Auditor → Enter "hypertension" → Request to /snomed/search?term=hypertension → ❌ ERROR 404 → User sees empty modal</p>
+
+            <h4>Root Cause Hypotheses</h4>
+            <ol>
+                <li>Incorrect or unconfigured endpoint</li>
+                <li>SNOMED service not deployed</li>
+                <li>Authentication problem</li>
+                <li>CORS not configured</li>
+                <li>Malformed parameters</li>
+            </ol>
+
+            <h3>Additional Defects Detected</h3>
+            
+            <h4>🔴 High Priority: Incorrect Classification in Filters</h4>
+            <p><strong>Problem:</strong> Fully validated patients remain in "PARTIALLY VALIDATED" state.</p>
+            <p><strong>Impact:</strong> Auditor cannot trust filters for work prioritization. Must manually review each patient to verify actual status.</p>
+            
+            <h4>🟡 Medium Priority: Confusing Message When Rejecting Information</h4>
+            <p><strong>Problem:</strong> When rejecting information with "NOT VALID", system shows success message (green color, generic text).</p>
+            <p><strong>Impact:</strong> Generates confusion in auditor. May lead to manual status verification.</p>
+
+            <!-- Results & Metrics -->
+            <h2 id="results">Results & Metrics</h2>
+            
+            <h3>Project Metrics</h3>
+            <ul>
+                <li><strong>Documentation Produced:</strong> 15-page SRS document, 3 use case diagrams, 2 sequence diagrams, 1 PSeInt prototype</li>
+                <li><strong>Requirements Coverage:</strong> 23 functional + 5 non-functional requirements with 100% traceability</li>
+                <li><strong>Testing Quality:</strong> 8 test cases, 25 min average per case, 37.5% rejection rate (appropriate for early testing phase)</li>
+            </ul>
+
+            <h3>ROI Analysis</h3>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">$3,000</div>
+                    <div class="stat-label">FA Investment</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$36,250</div>
+                    <div class="stat-label">Cost Avoided</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">12:1</div>
+                    <div class="stat-label">Return Ratio</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1,108%</div>
+                    <div class="stat-label">ROI Percentage</div>
+                </div>
+            </div>
+
+            <h3>Value Demonstrated</h3>
+            <p>This project exemplifies core Functional Analyst competencies:</p>
+            <ol>
+                <li><strong>Analysis & Abstraction Capacity:</strong> Transformed complex business requirements into precise technical specifications</li>
+                <li><strong>Effective Communication:</strong> Clear documentation following industry standards (IEEE 830)</li>
+                <li><strong>Critical Thinking:</strong> Detected 3 defects that would have caused severe production failures</li>
+                <li><strong>Domain Knowledge:</strong> Quickly understood digital health concepts (SNOMED CT, FHIR, EHR)</li>
+                <li><strong>Quality Focus:</strong> Exhaustive testing of critical flows with meticulous defect documentation</li>
+            </ol>
+
+            <!-- Conclusions -->
+            <h2 id="conclusions">Conclusions</h2>
+            
+            <h3>System Status</h3>
+            <div class="highlight-box">
+                <h4>⚠️ System NOT ready for validation or production</h4>
+                <p><strong>Blocking defects pending resolution:</strong></p>
+                <ul>
+                    <li>🔴 <strong>BUG-02 (CRITICAL):</strong> SNOMED CT search returns Error 404 - System unusable for its main purpose</li>
+                    <li>🔴 <strong>BUG-01 (HIGH):</strong> "Validated" filter incorrectly classifies patients</li>
+                </ul>
+            </div>
+
+            <h3>Formal Recommendation</h3>
+            <p><strong>❌ DO NOT PROCEED to:</strong></p>
+            <ul>
+                <li>Validation with end users</li>
+                <li>Production environment deployment</li>
+                <li>User training</li>
+            </ul>
+
+            <p><strong>✅ NEXT STEP:</strong></p>
+            <ol>
+                <li>Resolve BUG-02 (SNOMED CT service)</li>
+                <li>Resolve BUG-01 (filter logic)</li>
+                <li>Re-execute Test Cases 123 and 124</li>
+                <li>If both PASS, proceed to complete patient module testing</li>
+                <li>Only then consider user validation</li>
+            </ol>
+
+            <h3>Lessons Learned</h3>
+            
+            <h4>✅ What Worked Well:</h4>
+            <ul>
+                <li>IEEE 830 standard documentation provided clear structure</li>
+                <li>UML diagrams enabled visualization of user-system interactions</li>
+                <li>PSeInt prototyping validated business rules early</li>
+            </ul>
+
+            <h4>⚠️ Areas for Improvement:</h4>
+            <ul>
+                <li>Earlier testing would have allowed parallel corrections during design</li>
+                <li>Integration validation should occur BEFORE designing dependent flows</li>
+                <li>UI prototypes would have reduced interpretation ambiguity</li>
+            </ul>
+
+            <!-- Contact & Download -->
+            <h2 id="contact">Project Documentation</h2>
+            
+            <p>This case study demonstrates competencies in functional analysis, technical documentation, software testing, and critical thinking applied to digital health projects.</p>
+            
+            <a href="Case_Study__Portal_Personal_de_Salud.docx" class="download-button" download>
+                <i class="fas fa-download"></i>
+                Download Complete Case Study (Word)
+            </a>
+
+            <h3>Technologies & Standards Used</h3>
+            <div class="tech-stack">
+                <span class="tech-item">IEEE 830-1998</span>
+                <span class="tech-item">UML 2.0</span>
+                <span class="tech-item">SNOMED CT</span>
+                <span class="tech-item">FHIR R4</span>
+                <span class="tech-item">PSeInt</span>
+                <span class="tech-item">Functional Testing</span>
+                <span class="tech-item">Requirements Engineering</span>
+                <span class="tech-item">Use Case Modeling</span>
+                <span class="tech-item">Sequence Diagrams</span>
+            </div>
+
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-dna"></i>
+                    <span>Soledad Varady</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/soledad-varady-9620a8216" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:varadysoledad@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/svarady" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <p class="footer-text">&copy; 2024 Soledad Varady. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
